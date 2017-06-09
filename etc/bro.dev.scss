@@ -1,0 +1,388 @@
+@charset "UTF-8";
+
+@import 'bro.variable.scss';
+@import 'bro.common.scss';
+
+.bro-dev {
+	.contents {
+		@include calc_pd(0,40vh,0,40vh);
+	}
+	h2.stit {
+		@include calc_mg(30vh,0,5vh,0);
+		@include calc_pd(0,0,0,17vh);
+		position: relative;
+		font-size: 2vh;
+
+		&:after {
+			@include calc_w(8vh);
+			@include calc_h(8vh);
+			content: '';
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translate(0,-50%);
+			border-radius: 50%;
+			border: 3px solid $primary;
+		}
+
+		&.line {
+			@include calc_mg(30vh,0,15vh,0);
+			border-bottom: 2px solid $default;
+		}
+	}
+
+	h3.stit {
+
+	}
+
+	/* ::::::::::: BUTTON ::::::::::: */
+	.group-btn * {vertical-align: middle;}
+	.group-btn {
+		@extend .co-group-btn;
+	}
+
+	.button {
+		@extend .co-button;
+		font-family: texB;
+	}
+
+	.button.sm {
+		@include calc_h(30vh);
+		@include calc_lh(30vh);
+		@include calc_pd(0,15vh,0,15vh);
+		font-size: $ft_size_sm;
+	}
+
+	.button.lg {
+		@include calc_h(45vh);
+		@include calc_lh(45vh);
+		@include calc_pd(0,25vh,0,25vh);
+		font-size: $ft_size_lg;
+	}
+
+	.bg-default {background-color: $default;}
+	.bg-primary {background-color: $primary;}
+	.bg-success {background-color: $success;}
+	.bg-warning {background-color: $warning;}
+	.bg-danger {background-color: $danger;}
+
+	.fc-default {color: $default;}
+	.fc-primary {color: $primary;}
+	.fc-success {color: $success;}
+	.fc-warning {color: $warning;}
+	.fc-danger {color: $danger;}
+
+
+	.list-wrap ul li {color: #fff;}
+	.list-wrap .head {width: 100%;}
+	.list-wrap .head li * {vertical-align: middle;}
+	.list-wrap .head li {
+		display: flex; align-items: center; overflow: hidden;
+
+		> .cell {
+			@include calc_pd(0,0,0,20vh);
+			box-sizing: border-box; display: flex; flex: 1; align-items: center;
+			vertical-align: middle; color: #333;
+			font-family: 'texB'; text-transform: uppercase; font-size: 1.4vh;
+		}
+	}
+	.list-wrap .body {width: 100%;}
+	.list-wrap .body li * {vertical-align: middle;}
+	.list-wrap .body li {
+		@include calc_h(50vh);
+		@include calc_mg(8vh,0,0,0);
+		display: flex; align-items: center;	overflow: hidden;
+		border-left: 2px solid #227dc9; background-color: #393e52;
+
+		> .cell {
+			@include calc_pd(0,30vh,0,20vh);
+			box-sizing: border-box; display: flex; flex: 1; align-items: center; vertical-align: middle;
+		}
+
+		.progress {
+			i {display: block; width: 50px; margin-right: 15px; text-align: center;}
+			.bar {
+				flex: 1; height: 3px; background-color: #565b6f;
+				span {	display: block; width: 0; height: 100%; background-color: #00fcff;}
+			}
+		}
+
+		.assign {
+			display: flex; align-items: center;
+			.thum {display: block; overflow: hidden; width: 30px; height: 30px; margin-right: 10px; border-radius: 50%; background-color: #fff;}
+			dl {
+				overflow: hidden; position: relative; top: -1px;
+				dd {color: silver; font-size: 12px;}
+			}
+		}
+	}
+
+	.table-wrap {
+		table {
+			width: 100%; border-bottom: 2px solid #bdc3c7;
+			background-color: #fff;
+
+			tr {
+				th,
+				td {border-left: 1px solid #bdc3c7; text-align: center;}
+			}
+
+			thead {
+				tr {
+					th {
+						@include calc_h(40vh);
+						@include calc_pd(0vh,15vh,0vh,15vh);
+						border-top: 2px solid $primary;
+						border-bottom: 1px solid $primary;
+						font-weight: normal;
+						font-family: 'texB';
+					}
+				}
+			}
+
+			tbody {
+				tr {
+					td {
+						@include calc_pd(5vh,15vh,5vh,15vh);
+						border-top: 1px solid #bdc3c7;
+					}
+				}
+				&.stripe tr:nth-child(odd) td {
+					background-color: #ecf0f1;
+				}
+			}
+
+			thead tr th:first-child,
+			tbody tr td:first-child {border-left: none !important;}
+
+			&.lineNone {
+				thead tr th,
+				tbody tr td {border-left: 0;}
+			}
+		}
+	}
+
+	.table-wrap-row {
+		width: 100%;
+		border-top: 2px solid $primary;
+		border-bottom: 2px solid #bdc3c7;
+		background-color: #fff;
+
+		tr {
+			th,
+			td {
+				@include calc_pd(0,15vh,0,15vh);
+				text-align: left;
+				border: 1px solid $default;
+			}
+			th {background-color: #fff;}
+			td * {vertical-align: middle;}
+		}
+
+		tbody {
+			tr {
+				td {
+					@include calc_pd(5vh,15vh,5vh,15vh);
+				}
+			}
+		}
+	}
+
+	.box {
+		@include calc_w(300vh);
+		@include calc_h(288vh);
+		@include calc_radius(7vh,7vh,7vh,7vh);
+		overflow: hidden; display: flex; flex-direction: column;
+
+		header {
+			@include calc_h(42vh);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: $primary;
+			color: #fff;
+		}
+		.cnt {
+			flex: 1;
+			background-color: #ecf0f1;
+		}
+	}
+
+	.user-list {
+		ul {
+			li {
+				@include calc_pd(6vh, 0, 6vh,0);
+				display: flex;
+				align-items: center;
+				.thum {
+					@include calc_w(60vh);
+					@include calc_h(60vh);
+					@include calc_mg(0,6vh,0,0);
+					overflow: hidden;
+					border-radius: 50%;
+					background-color: $primary;
+				}
+			}
+		}
+	}
+
+	.item-view {
+		@include calc_w(600vh);
+		@include calc_pd(4vh,4vh,4vh,4vh);
+
+		box-sizing: border-box;
+		border: 2px solid #eaeaea;
+		.detail {
+			@include calc_h(300vh);
+			display: block; background-color: #eaeaea;
+		}
+
+		.list {
+			@include calc_mg(5vh,0,0,0);
+			display: flex; width: 100%;
+			justify-content: space-between;
+
+			li {
+				@include calc_h(120vh);
+				width: 32.6%; background-color: #eaeaea;
+			}
+		}
+	}
+
+	/* :::::::::::::: FORM :::::::::::::: */
+	.form-wrap {
+		@include calc_pd(8vh,8vh,8vh,8vh);
+		border: 3px solid $default;
+	}
+
+	.form-wrap {
+		.group-btn {
+			@include calc_pd(16vh,8vh,8vh,8vh);
+			border-top: 1px solid $default;
+			text-align: center;
+
+			.button {
+				@include calc_mg(0,5vh,0,5vh);
+			}
+		}
+	}
+
+    .form-text {
+        @include calc_h(30vh);
+        @include calc_lh(30vh);
+        @include calc_pd(0,10vh,0,10vh);
+
+        box-sizing: border-box;
+        border: 1px solid $default;
+        font-size: 1.4vh;
+    }
+
+	.form-radio {
+		@include calc_w(16vh);
+		@include calc_h(16vh);
+	}
+	.form-radio + label {
+		@include calc_pd(0,20vh,0,0);
+		font-size: 1.3vh; line-height: 1;
+	}
+
+	.form-checkbox {
+		@include calc_w(16vh);
+		@include calc_h(16vh);
+	}
+	.form-checkbox + label {
+		@include calc_pd(0,20vh,0,0);
+		font-size: 1.3vh; line-height: 1;
+	}
+
+	label + .data-text {
+		@include calc_pd(0,10vh,0,10vh);
+		position: relative;
+		font-size: 1.3vh; line-height: 1;
+
+		&:after {
+			@include calc_h(13vh);
+			@include calc_top(2vh);
+
+			content: '';
+			display: block;
+			position: absolute;
+
+			left: 0;
+			border-left: 1px solid $default;
+		}
+	}
+
+
+	/* :::::::::::::: GRID :::::::::::::: */
+	.grid-box {
+		&:after {
+			content: '';
+			clear: both;
+			overflow: hidden;
+			display: block;
+			height: 0;
+		}
+
+		&.bgNone [class*="col-"] {
+			background-color: #fff;
+			border: none;
+		}
+	}
+	[class^="col-"] {
+		@include calc_pd(5vh,14vh,5vh,14vh);
+		box-sizing: border-box;
+		float: left;
+		background-color: $default;
+		border: 1px solid #eaeaea;
+	}
+
+	.col-1 {
+		@include calc_col(1);
+	}
+
+	.col-2 {
+		@include calc_col(2);
+	}
+
+	.col-3 {
+		@include calc_col(3);
+	}
+
+	.col-4 {
+		@include calc_col(4);
+	}
+
+	.col-5 {
+		@include calc_col(5);
+	}
+
+	.col-6 {
+		@include calc_col(6);
+	}
+
+	.col-7 {
+		@include calc_col(7);
+	}
+
+	.col-8 {
+		@include calc_col(8);
+	}
+
+	.col-9 {
+		@include calc_col(9);
+	}
+
+	.col-10 {
+		@include calc_col(10);
+	}
+
+	.col-11 {
+		@include calc_col(11);
+	}
+
+	.col-12 {
+		@include calc_col(12);
+	}
+}

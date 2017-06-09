@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+
+/*
+  계산공식
+  w: (구하고자 하는 가로 / 1080) * 100;
+  h: (구하고자 하는 세로 / 1080) * 100;
+*/
+
+$win_h: 1080;
+
+$point_color: #ffc700;
+$point_color_sub1: #cc9f00;
+$point_color_sub2: #ff9e00;
+$point_color_sub3: #cc7e00;
+
+$bgcolor: rgba(255,180,0, 1); /* #ffb400 */
+$bgcolor_leave: rgba(255,180,0, 0.5);
+$bgcolor_enter: rgba(255,180,0, 0.7);
+
+$bgcolor_s1: rgba(204,144,0, 1); /* #cc9000 */
+$bgcolor_s1_leave: rgba(204,144,0, 0.7);
+$bgcolor_s1_enter: rgba(204,144,0, 0.9);
+
+
+/* IMAGE PATH */
+$img: './images';
+$img_common: '../common/images';
+$img_icon: './images/icon';
+$img_btn: '../common/images/button';
+
+/* FONT: SIZE */
+$ft_size_primary: 1.6vh;
+$ft_size_xs: 1.2vh;
+$ft_size_sm: 1.4vh;
+$ft_size_md: 1.8vh;
+$ft_size_lg: 2vh;
+$ft_size_xl: 2.4vh;
+$ft_size_xxl: 2.8vh;
+
+/* COLOR */
+$default: #ddd;
+$primary: #3498db;
+$success: #1abc9c;
+$info: #ac92ea;
+$warning: #ffa800;
+$danger: #e74c3c;
+
+
+/* OVERLAY COLOR */
+$ov_black: rgba(0,0,0,1);
+$ov_black_1: rgba(0,0,0,0.35);
+$ov_black_2: rgba(0,0,0,0.65);
+$ov_black_3: rgba(0,0,0,0.8);
+
+$ov_white: rgba(255,255,255,1);
+$ov_white_1: rgba(255,255,255,0.35);
+$ov_white_2: rgba(255,255,255,0.65);
+$ov_white_3: rgba(255,255,255,0.8);
+
+$ov_red: rgba(183,0,0,1);
+$ov_red_1: rgba(183,0,0,0.35);
+$ov_red_2: rgba(183,0,0,0.65);
+$ov_red_3: rgba(183,0,0,0.8);
+
+$multi_font: Arial, Helvetica, 'Ms PGothic', 'microsoft yahei', 'Malgun Gothic', sans-serif;
+
+/* EASING */
+$easeOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+@mixin calc_w($width) {
+  width: ($width/$win_h)*100;
+}
+
+@mixin calc_fz($size) {
+  font-size: ($size/$win_h)*100;
+}
+
+@mixin calc_h($height) {
+  height: ($height/$win_h)*100;
+}
+
+@mixin calc_lh($height) {
+  line-height: ($height/$win_h)*100;
+}
+
+@mixin calc_mg($t,$r,$b,$l) {
+  $calc_t: ($t/$win_h)*100;
+  $calc_r: ($r/$win_h)*100;
+  $calc_b: ($b/$win_h)*100;
+  $calc_l: ($l/$win_h)*100;
+  margin: $calc_t $calc_r $calc_b $calc_l;
+}
+
+@mixin calc_mgauto($t,$b) {
+  $calc_t: ($t/$win_h)*100;
+  $calc_b: ($b/$win_h)*100;
+  margin: $calc_t auto $calc_b auto;
+}
+
+@mixin calc_pd($t,$r,$b,$l) {
+  $calc_t: ($t/$win_h)*100;
+  $calc_r: ($r/$win_h)*100;
+  $calc_b: ($b/$win_h)*100;
+  $calc_l: ($l/$win_h)*100;
+  padding: $calc_t $calc_r $calc_b $calc_l;
+}
+
+@mixin calc_radius($t,$r,$b,$l) {
+  $calc_t: ($t/$win_h)*100;
+  $calc_r: ($r/$win_h)*100;
+  $calc_b: ($b/$win_h)*100;
+  $calc_l: ($l/$win_h)*100;
+  border-radius: $calc_t $calc_r $calc_b $calc_l;
+}
+
+@mixin calc_translate($x, $y) {
+  $calc_x: ($x/$win_h)*100;
+  $calc_y: ($y/$win_h)*100;
+  transform: translate($calc_x, $calc_y);
+}
+
+@mixin calc_translate3d($x, $y, $z) {
+  $calc_x: ($x/$win_h)*100;
+  $calc_y: ($y/$win_h)*100;
+  $calc_z: ($z/$win_h)*100;
+  transform: translate3d($calc_x, $calc_y, $calc_z);
+}
+
+/* POSITION */
+@mixin calc_left($left) {
+  $calc_left: ($left/$win_h)*100;
+  left: $calc_left;
+}
+
+@mixin calc_right($right) {
+  $calc_right: ($right/$win_h)*100;
+  right: $calc_right;
+}
+
+@mixin calc_top($top) {
+  $calc_top: ($top/$win_h)*100;
+  top: $calc_top;
+}
+
+@mixin calc_bottom($bottom) {
+  $calc_bottom: ($bottom/$win_h)*100;
+  bottom: $calc_bottom;
+}
+
+@mixin calc_col($column) {
+  width: (100%/12) * $column;
+}
+
+@mixin calc_border($width, $style, $color) {
+  $calc_w: ($width/$win_h)*100;
+  border: $calc_w $style $color;
+}
+
+@mixin calc_bgsize($width, $height) {
+  $calc_w: ($width/$win_h)*100;
+  $calc_h: ($height/$win_h)*100;
+  background-size: $calc_w $calc_h;
+}
+
+@mixin calc_bgposition($left, $top) {
+  $calc_left: ($left/$win_h)*100;
+  $calc_top: ($top/$win_h)*100;
+  background-position: $calc_left $calc_top;
+}
+
+@mixin calc_letterspace($space) {
+  $calc_space: ($space/$win_h)*100;
+  letter-spacing: $calc_space;
+}
+
+@mixin whiteBg($alpha) {
+  background-color: rgba(255,255,255,$alpha);
+}
+
+@mixin whiteTxt($alpha) {
+  color: rgba(255,255,255,$alpha);
+}

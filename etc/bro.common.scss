@@ -1,0 +1,282 @@
+﻿@import 'bro.variable.scss';
+
+::-webkit-scrollbar { @include calc_w(10vh);}
+::-webkit-scrollbar-button       { /* 2 */ }
+::-webkit-scrollbar-track        { /* 3 */ }
+::-webkit-scrollbar-track-piece  { /* 4 */ }
+::-webkit-scrollbar-thumb        {
+	background-color: rgba(255,255,255,0);
+	border-right: 2px solid rgba(255,255,255,0.4);
+}
+::-webkit-scrollbar-corner       { /* 6 */ }
+::-webkit-resizer                { /* 7 */ }
+
+.bgdim {
+    position: fixed; left: 0; top: 0; z-index: -1;
+    width: 100%; height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.bro-highlight {
+    background-color: #ffb400;
+}
+
+.co-group-btn {
+	@include calc_mg(15vh,0,0,0);
+	text-align: center;
+
+	&.dirc-center {text-align: center;}
+	&.dirc-right {text-align: right;}
+	&.dirc-left {text-align: left;}
+}
+
+.co-button {
+	@include calc_h(40vh);
+	@include calc_lh(40vh);
+	@include calc_pd(0,20vh,0,20vh);
+
+	display: inline-block;
+	text-align: center;
+	background-color: #bdc3c7;
+	color: $ov_white;
+}
+
+.text-shadow {text-shadow: 0 2px 2px rgba(0,0,0,0.8);}
+
+i[class^="flag"] {
+	@include calc_w(81vh);
+	@include calc_h(38vh);
+	@include calc_pd(5vh,0,0,5vh);
+
+	box-sizing: border-box; display: inline-block;
+	position: absolute; top: 0; left: 0;
+	color: rgba(255,255,255,0.6);
+	font-weight: 400;
+	font-size: 1.4vh;
+	font-style: italic;
+	background-size: cover !important;
+
+	&.flag-rank1 {background: url('#{$img_common}/flag-1.png') 0 0 no-repeat;}
+	&.flag-rank2 {background: url('#{$img_common}/flag-2.png') 0 0 no-repeat;}
+	&.flag-rank3 {background: url('#{$img_common}/flag-3.png') 0 0 no-repeat;}
+	&.flag-rank4 {background: url('#{$img_common}/flag-4.png') 0 0 no-repeat;}
+	&.flag-rank5 {background: url('#{$img_common}/flag-5.png') 0 0 no-repeat;}
+	&.flag-rank6 {background: url('#{$img_common}/flag-6.png') 0 0 no-repeat;}
+	&.flag-rank7 {background: url('#{$img_common}/flag-7.png') 0 0 no-repeat;}
+	&.flag-rankN {background: url('#{$img_common}/flag-n.png') 0 0 no-repeat;}
+}
+
+/* 로비안의 play 영역과 별개로 갈지 논의 후 css 간소화 예정 */
+.bro-playarea {
+    @include calc_w(450vh);
+    @include calc_h(173vh);
+    position: fixed; top: 0; left: 0;
+    z-index: 7;
+
+    .bro-colorbg,
+    .cdt-text {opacity: 1; transition: opacity 1s ease-in-out;}
+
+    .bro-lastbg {
+        @include calc_w(450vh);
+        @include calc_h(173vh);
+
+        position: absolute; top: 0; left: 0;
+        background: url('#{$img_common}/play-group.png') 0 0 no-repeat; background-size: cover;
+    }
+
+    .bro-colorbg {
+        @include calc_w(443vh);
+        @include calc_h(155vh);
+
+        position: absolute; top: 0; left: 0;
+        background-repeat: round;
+        background-position: 0 0;
+        background-size: cover;
+    }
+
+    div[class^="bro-condition"] {
+        @include calc_w(270vh);
+        @include calc_left(30vh);
+        @include calc_top(14vh);
+
+        display: none;
+        position: absolute;
+        line-height: 1; font-family: 'bombard';
+        text-transform: uppercase;
+        transition: all 0.4s;
+        cursor: pointer;
+
+        .cdt-text {
+            @include calc_w(270vh);
+            @include calc_mg(0,0,-8vh,0);
+
+            line-height: 1;
+            text-shadow: 5px 5px 10px rgba(0,0,0,0.8), -5px -5px 10px rgba(0,0,0,0.4);
+            font-size: 7.6vh;
+            color: #fff;
+            letter-spacing: -2px;
+            -webkit-text-stroke: 1px #000;
+        }
+
+        .desc-text {
+            position: relative;
+            font-size: 4.2vh;
+            font-family: 'moonshiner';
+            text-shadow: 4px 4px 5px rgba(0,0,0,0.62);
+            color: #ffc700;
+            -webkit-text-stroke: 1px #000;
+        }
+    }
+
+    /* CONDITION: LOADING */
+    &.bro-loading {
+        .bro-colorbg {background-image: url('#{$img_common}/loading-bg.png');}
+        .bro-condition-loading {
+            display: block;
+        }
+
+        &:after{
+            @include calc_w(459vh);
+            @include calc_h(231vh);
+            @include calc_top(39vh);
+            @include calc_left(-68vh);
+            content:'';
+            position: absolute;
+            pointer-events: none;
+            z-index: 100;
+
+            background: -webkit-linear-gradient(left,
+                rgba(255, 255, 255, 0.0) 0%,
+                rgba(255, 255, 255, 0.5) 8%,
+                rgba(255, 255, 255, 1) 16%,
+                rgba(255, 255, 255, 0.5) 19%,
+                rgba(255, 255, 255, 0.0) 20%
+            );
+
+            background-position: inherit;
+            -webkit-mask: url('#{$img_common}/play-bg1.png') 0px 0px no-repeat;
+            -webkit-mask-size: cover;
+            transform: rotate(-30deg);
+            transform-origin: 0 0;
+            animation: shine linear 2s infinite;
+        }
+    }
+    /* //CONDITION: LOADING */
+}
+
+@keyframes shine {
+    0% {background-position: inherit; opacity: 0;}
+    35% {background-position: inherit; opacity: 0;}
+    50% {background-position: 34vh 0; opacity: 1;}
+    75% {background-position: 34vh 0; opacity: 0;}
+    100% {background-position: 0vh 0; opacity: 0;}
+}
+
+/* BRO-NATION-SERVER */
+.bro-nation-server {
+    @include calc_top(70vh);
+    @include calc_left(-180vh);
+    position: absolute;
+    background-color: rgba(255,255,255,0.01);
+
+    .group-team,
+    .group-region {
+        a {
+            @include calc_h(30vh);
+            @include calc_lh(30vh);
+            @include calc_pd(0,50vh,0,0);
+            @extend .text-shadow;
+
+            position: relative;
+            display: block;
+            transition: color 0.4s;
+            text-transform: uppercase;
+            text-align: right;
+            font-size: 1.8vh;
+            color: rgba(255,255,255,0.7);
+
+            &:hover {
+                color: #fff;
+            }
+            &.bro-region-active {
+                color: $point_color !important;
+            }
+
+            &:after {
+                @include calc_w(32vh);
+                @include calc_h(31vh);
+                @include calc_top(-5vh);
+                @include calc_right(12vh);
+                @include calc_translate3d(0,-20vh,0)
+
+                content: '';
+                opacity: 0;
+                position: absolute;
+                display: block;
+                transition: opacity 0.4s, transform 0.4s $easeOutBack;
+                background: url('#{$img_common}/ico-chk.png') 0 0 no-repeat;
+                background-size: cover;
+            }
+
+            &.bro-region-active {
+                &:after {
+                    @include calc_translate3d(0,0,0);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .group-season {
+        a {
+            @include calc_w(166vh);
+            @include calc_h(62vh);
+            @include calc_mg(5vh,0,0,0);
+            @include calc_pd(2vh,0,0,0);
+            @include calc_fz(18vh);
+
+            position: relative;
+            box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
+            line-height: 1.1; text-align: center;
+            background: url(#{$img_common}/season-tab.png) 0 0 no-repeat;
+            background-size: cover;
+            span {
+                display: block; text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+                opacity: 0.6; transition: opacity 0.4s;
+            }
+
+            &:not(.comming):hover,
+            &.bro-active {
+                background-position: 0 bottom;
+                span {opacity: 1;}
+            }
+            &:first-child {margin-top: 0;}
+
+            &.comming{
+                cursor: default;
+
+                &:after {
+                    @include calc_w(46vh);
+                    @include calc_h(38vh);
+                    @include calc_top(6vh);
+                    @include calc_left(-15vh);
+
+                    content: ''; display: block; position: absolute;
+                    background: url(#{$img_common}/ico-comming.png) 0 0 no-repeat;
+                    background-size: cover;
+                }
+            }
+        }
+    }
+
+    [class^="group-"] {
+        @include calc_mg(30vh,0,0,0);
+    }
+
+    [class^="group-team"] {
+        a {
+            font-weight: 700; font-size: 2.4vh;
+        }
+    }
+}
+/* //BRO-NATION-SERVER */
