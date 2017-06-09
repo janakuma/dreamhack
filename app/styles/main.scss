@@ -1,26 +1,409 @@
-// bower:scss
-// endbower
+@charset "UTF-8";
 
-.browserupgrade {
-	margin: 0.2em 0;
-	background: #ccc;
-	color: #000;
-	padding: 0.2em 0;
+@import 'variable.scss';
+@import 'common.scss';
+
+.dh_wrapper {
+	@include calc_w(1620vh);
+	@include calc_h(938vh);
+	@include calc_pd(43vh,27vh,0,58vh);
+
+	box-sizing: border-box; position: relative; margin: 0 auto; border: 2px solid #b9b9b9; background-color: #000;
+	background: #000 url('#{$img}/dh-bg.jpg') 0 0 no-repeat;
+	background-size: contain;
+
+	.dh-contain {
+		@include calc_w(1153vh);
+		@include calc_h(855vh);
+		float: right;
+	}
 }
 
-body {
-	background: #fafafa;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #333;
+.sideMenu {
+
+	@include calc_top(25vh);
+	@include calc_left(58vh);
+
+	position: absolute;
+
+
+	h1 {
+		@include calc_w(235vh);
+		img {width: 100%;}
+	}
+
+	.dh-playStep {
+		@include calc_mg(45vh,0,0,0);
+
+		li {
+			@include calc_mg(0,0,7vh,0);
+			@include calc_fz(44vh);
+			opacity: 0.25;
+
+			span {
+				@include calc_mg(0,0,0,12vh);
+				display: inline-block;
+
+				&.step {
+					color: #fff;
+					em {
+						@include calc_w(30vh);
+						display: inline-block;
+						text-align: center;
+					}
+
+					sup {
+						@include calc_fz(20vh);
+						@include calc_top(5vh);
+
+						position: relative;
+						vertical-align:top;
+					}
+				}
+
+				&.day {color: #a8a8a8;}
+				&.matchType {color: #fff;}
+			}
+		}
+
+		li.on {
+			opacity: 1;
+
+			span {
+				@include calc_mg(0,0,0,12vh);
+				display: inline-block;
+
+				&.step {
+					em,
+					sup {color: $point_color;}
+				}
+			}
+
+		}
+	}
+}
+
+.btn-rule {
+	@include calc_fz(18vh);
+	@include calc_left(57vh);
+	@include calc_bottom(38vh);
+
+	position: absolute; font-family: 'bombard'; color: #fff;
+	opacity: 0.6;
+	transition: opacity 0.4s;
+
+	&:before {
+		@include calc_w(20vh);
+		@include calc_h(20vh);
+		@include calc_mg(0,7vh,0,0);
+		@include calc_top(1vh);
+
+		content: ''; position: relative; vertical-align: middle;
+		display: inline-block;
+		background: url('#{$img}/ico-help.png') 0 0 no-repeat;
+		background-size: cover;
+	}
+
+	&:hover {opacity: 1;}
+}
+
+.dh-teamRanking {
+	@include calc_h(165vh);
+	tr td {cursor: pointer;}
+}
+
+.dh-leaderboard {
+	@include calc_h(492vh);
+	tr td {cursor: pointer;}
+}
+
+.dh-matches {
+	@include calc_h(410vh);
+}
+
+/* TEAM INFO */
+.dh-teamInfo {
+
+}
+
+.dh-nickname {
+	text-align: center;
+
+	li {
+		@include calc_h(130vh);
+		@include calc_pd(50vh,15vh,0,15vh);
+		@include calc_fz(24vh);
+
+		box-sizing: border-box; display: inline-block;
+	}
+}
+
+.dh-score {
+
+	box-sizing: border-box; background-color: #1f1f1f;
+
+	ul {
+		display: flex; border: 1px solid #3f3f3f;
+
+
+		li {
+			@include calc_h(150vh);
+			@include calc_pd(25vh,0,0,0);
+			@include calc_fz(34vh);
+
+			box-sizing: border-box; flex:1; position: relative; text-align: center;
+			border-left: 1px dashed #3f3f3f;
+
+			&:first-child {border-left: none;}
+
+			span {
+				@include calc_fz(24vh);
+			}
+
+			em {
+				@include calc_mg(25vh,0,0,0);
+				display: block;
+			}
+		}
+
+		li:first-child {
+			&:before,
+			&:after {
+				@include calc_w(20vh);
+				@include calc_h(20vh);
+				content: ''; display: block; 	position: absolute; left: 0;
+				border-left: 1px solid $point_color;
+				left: -1px;
+			}
+
+			&:before {
+				top: -1px;
+				border-top: 1px solid $point_color;
+			}
+
+			&:after {
+				bottom: -1px; left: -1px;
+				border-bottom: 1px solid $point_color;
+			}
+		}
+
+		li:last-child {
+			&:before,
+			&:after {
+				@include calc_w(20vh);
+				@include calc_h(20vh);
+				content: ''; display: block; position: absolute;
+				border-right: 1px solid $point_color;
+				right: -1px;
+			}
+
+			&:before {
+				top: -1px;
+				border-top: 1px solid $point_color;
+			}
+
+			&:after {
+				bottom: -1px;
+				border-bottom: 1px solid $point_color;
+
+			}
+		}
+
+
+
+	}
+}
+/* //TEAM INFO */
+
+h3.dh-zone {
+	@include calc_h(35vh);
+	@include calc_fz(24vh);
+
+	&.gap35 {
+		@include calc_mg(35vh,0,0,0);
+	}
+
+	&.gap45 {
+		@include calc_mg(45vh,0,0,0);
+	}
+}
+
+header.dh-zone {
+	@include calc_h(35vh);
+	@include calc_fz(24vh);
+
+	position: relative; border-bottom: 1px solid #3f3f3f; text-align: center;
+
+	&.point {
+		border-color: $point_color;
+		h3 {color: $point_color;}
+	}
+
+	button {
+		font-family: 'bombard';
+		color: #d1d1d1;
+
+		transition: color 0.4s;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	.dh-btnPrev {
+		@include calc_fz(20vh);
+		@include calc_top(4vh);
+
+		position: absolute; left: 0;
+
+		&:before {
+			@include calc_w(7vh);
+			@include calc_h(11vh);
+			@include calc_mg(0,7vh,0,0);
+			@include calc_top(1vh);
+
+			content: ''; position: relative;
+			display: inline-block;
+			background: url('#{$img}/arrow-prev.png') 0 0 no-repeat;
+			background-size: cover; vertical-align: middle;
+		}
+	}
 }
 
 
-.stm {
-	font-family: 'stm';
-	letter-spacing: -2px;
+/* LIST TYPE */
+.dh-list {
+	thead {
+		th {
+			@include calc_h(50vh);
+			@include calc_fz(20vh);
+			border-top: 1px solid #c4c4c4;
+			border-bottom: 1px solid #c4c4c4;
+
+			&.sm {
+				@include calc_fz(16vh);
+			}
+
+			&.score {
+				@include calc_fz(32vh);
+				color: $point_color;
+				background: url('#{$img}/pattern.png') 0 0 repeat;
+			}
+		}
+	}
+
+	tbody {
+		tr:first-child td {
+			border-top: 1px solid #3f3f3f;
+		}
+
+
+		tr.highlight td {
+			border-bottom: 1px solid rgba(255,255,255,0.3);
+			background-color: rgba(255,298,0,0.25);
+		}
+
+		tr:hover td {
+			background-color: #fff !important;
+			color: #000 !important;
+		}
+
+		td {
+			@include calc_pd(8vh,0,8vh,0);
+			border-bottom: 1px solid #3f3f3f;
+			font-family: 'stm'; text-align: center;
+
+			.member {
+			 	overflow: hidden;
+
+				li {
+					@include calc_pd(3vh,0,3vh,0);
+
+					float: left; width: 50%; text-align: center;
+					font-family: 'bombard';
+				}
+			}
+		}
+	}
 }
 
-.bombard {
-	font-family: 'bombard';
-	letter-spacing: 0px;
+.dh-paging {
+	@include calc_mg(15vh,0,0,0);
+
+	a {
+		@include calc_w(34vh);
+		@include calc_h(28vh);
+		@include calc_fz(16vh);
+		@include calc_lh(28vh);
+
+		display: inline-block; background-color: #000; transition: background-color 0.4s; color: $disabled_color;
+
+		&:hover {background-color: #717171; color: #fff;	}
+		&.on {background-color: #fff; color: #000;}
+	}
+
+	text-align: center;
+}
+/* //LIST TYPE */
+
+/* RULE */
+.dh-rule {
+	@include calc_h(776vh);
+
+	.dh-zone {
+		@include calc_pd(10vh,10vh,10vh,10vh);
+		@include calc_fz(20vh);
+		line-height: 1.4;
+	}
+}
+
+.dh-language {
+	@include calc_pd(16vh,0,0,0);
+
+	border-top: 1px solid #3f3f3f; text-align: right;
+
+	button {
+		@include calc_mg(0,0,0,15vh);
+		@include calc_fz(16vh);
+		font-family: 'bombard';
+		color: $disabled_color;
+		transition: color 0.4s;
+
+		&.on,
+		&:hover {
+			color: $point_color;
+		}
+	};
+}
+
+/* OPTION */
+.dh-option {
+	@include calc_right(-2vh);
+
+	position: absolute;
+	top: 0;
+
+	font-size: 0;
+	button {
+		@include calc_w(38vh);
+		@include calc_h(34vh);
+		font-size: 0;
+
+		&.dh-btnReload {
+			background: url('#{$img}/btn-reload-off.png') 0 0 no-repeat;
+
+			&:hover {
+				background: url('#{$img}/btn-reload-on.png') 0 0 no-repeat;
+			}
+		}
+
+		&.dh-btnClose {
+			background: url('#{$img}/btn-close-off.png') 0 0 no-repeat;
+
+			&:hover {
+				background: url('#{$img}/btn-close-on.png') 0 0 no-repeat;
+			}
+		}
+		background-size: cover;
+	}
 }
