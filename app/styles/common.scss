@@ -84,6 +84,7 @@ table {
 }
 .dh-zone {
     @include calc_w(1120vh);
+    padding-bottom: 1px;
 }
 
 /* font */

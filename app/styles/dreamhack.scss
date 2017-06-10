@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 @import 'variable.scss';
 @import 'common.scss';
 
@@ -89,8 +88,7 @@
 	@include calc_bottom(38vh);
 
 	position: absolute; font-family: 'bombard'; color: #fff;
-	opacity: 0.6;
-	transition: opacity 0.4s;
+	transition: color 0.4s;
 
 	&:before {
 		@include calc_w(20vh);
@@ -98,13 +96,15 @@
 		@include calc_mg(0,7vh,0,0);
 		@include calc_top(1vh);
 
-		content: ''; position: relative; vertical-align: middle;
-		display: inline-block;
-		background: url('#{$img}/ico-help.png') 0 0 no-repeat;
-		background-size: cover;
+		content: ''; display: inline-block; position: relative; border-radius: 50%;
+		background: #fff url('#{$img}/ico-help.png') 50% 50% no-repeat; background-size: cover;
+		vertical-align: middle; transition: background-color 0.4s;
 	}
 
-	&:hover {opacity: 1;}
+	&:hover {
+		color: $point_color;
+		&:before {background-color: $point_color;}
+	}
 }
 
 .dh-teamRanking {
@@ -119,6 +119,15 @@
 
 .dh-matches {
 	@include calc_h(410vh);
+
+	tbody {
+		tr:nth-of-type(1) td ,
+		tr:nth-of-type(2) td ,
+		tr:nth-of-type(3) td  {
+			border-bottom: 1px solid rgba(255,255,255,0.3);
+			background-color: rgba(255,298,0,0.25);
+		}
+	}
 }
 
 /* TEAM INFO */
@@ -139,7 +148,6 @@
 }
 
 .dh-score {
-
 	box-sizing: border-box; background-color: #1f1f1f;
 
 	ul {
@@ -293,23 +301,9 @@ header.dh-zone {
 	}
 
 	tbody {
-		tr:first-child td {
-			border-top: 1px solid #3f3f3f;
-		}
-
-
-		tr.highlight td {
-			border-bottom: 1px solid rgba(255,255,255,0.3);
-			background-color: rgba(255,298,0,0.25);
-		}
-
-		tr:hover td {
-			background-color: #fff !important;
-			color: #000 !important;
-		}
 
 		td {
-			@include calc_pd(8vh,0,8vh,0);
+			@include calc_pd(8vh, 10vh,8vh,10vh);
 			border-bottom: 1px solid #3f3f3f;
 			font-family: 'stm'; text-align: center;
 
@@ -323,6 +317,26 @@ header.dh-zone {
 					font-family: 'bombard';
 				}
 			}
+
+			&.aRight {
+				text-align: right;
+				@include calc_pd(8vh, 18vh,8vh,18vh);
+			}
+		}
+
+		tr:first-child td {
+			border-top: 1px solid #3f3f3f;
+		}
+
+
+		tr.highlight td {
+			border-bottom: 1px solid rgba(255,255,255,0.3);
+			background-color: rgba(255,298,0,0.25);
+		}
+
+		tr:hover td {
+			background-color: #fff !important;
+			color: #000 !important;
 		}
 	}
 }
