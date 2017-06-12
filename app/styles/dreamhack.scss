@@ -34,10 +34,15 @@
 	.dh-playStep {
 		@include calc_mg(45vh,0,0,0);
 
+		&.type1 {
+			@include calc_mg(45vh,0,0,8vh);
+		}
+
 		li {
 			@include calc_mg(0,0,7vh,0);
 			@include calc_fz(44vh);
 			opacity: 0.25;
+			text-transform: uppercase;
 
 			span {
 				@include calc_mg(0,0,0,12vh);
@@ -405,19 +410,23 @@ header.dh-zone {
 
 		&.dh-btnReload {
 			background: url('#{$img}/btn-reload-off.png') 0 0 no-repeat;
+			background-size: cover;
 
 			&:hover {
 				background: url('#{$img}/btn-reload-on.png') 0 0 no-repeat;
+				background-size: cover;
 			}
 		}
 
 		&.dh-btnClose {
 			background: url('#{$img}/btn-close-off.png') 0 0 no-repeat;
+			background-size: cover;
 
 			&:hover {
 				background: url('#{$img}/btn-close-on.png') 0 0 no-repeat;
+				background-size: cover;
 			}
 		}
-		background-size: cover;
+
 	}
 }
